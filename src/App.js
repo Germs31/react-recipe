@@ -41,7 +41,7 @@ const App = () => {
           <Recipe 
             key={i}
             title={r.recipe.label}
-            calories={r.recipe.calories}
+            calories={Math.round(r.recipe.calories)}
             image={r.recipe.image}
             ingredients={r.recipe.ingredients}
           />

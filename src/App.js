@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Recipe from './Recipe.js'
 import logo from './logo.svg';
 import './App.css';
 
@@ -9,7 +10,7 @@ const App = () => {
   }, [])
 
   const getRecipes = async () => {
-    const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}&from=0&to=5&calories=591-722&health=alcohol-free`)
+    const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}`)
     const data = await response.json()
     console.log(data)
   }
@@ -21,6 +22,7 @@ const App = () => {
         <input type="text"/>
         <button type="submit">Search</button>
       </form>
+      <Recipe/>
     </div>
   );
 }

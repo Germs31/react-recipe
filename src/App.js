@@ -5,6 +5,8 @@ import './App.css';
 
 const App = () => {
 
+  const [recipes, setRecipes] = useState([])
+
   useEffect(() =>{
     getRecipes()
   }, [])
@@ -13,6 +15,7 @@ const App = () => {
     const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}`)
     const data = await response.json()
     console.log(data)
+    setRecipes(data.hits)
   }
 
   return (
@@ -22,7 +25,15 @@ const App = () => {
         <input type="text"/>
         <button type="submit">Search</button>
       </form>
-      <Recipe/>
+      {
+        recipes.map(r => (
+          <Recipe 
+            title={r.recipe.label}
+            calories={r.recipe.calories}
+            image={r.recipe.image}
+          />
+        ))
+      }
     </div>
   );
 }

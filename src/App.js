@@ -30,6 +30,7 @@ const App = () => {
     const response = await fetch(`https://api.edamam.com/search?q=bacon&app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}`)
     const data = await response.json()
     setRecipes(data.hits)
+    console.log(data.hits)
   }
 
   return (

@@ -24,13 +24,11 @@ const App = () => {
     setSearch('')
   }
 
-  //${query}
 
   const getRecipes = async () => {
-    const response = await fetch(`https://api.edamam.com/search?q=bacon&app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}`)
+    const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${process.env.APP_ID}&app_key=${process.env.API_KEY}`)
     const data = await response.json()
     setRecipes(data.hits)
-    console.log(data.hits)
   }
 
   return (
